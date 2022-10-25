@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+            font-family: Calibri, arial, sans-serif;
+
+        }
+
+        span{
+            display: block; /* passa a ocupar a linha inteira */
+        }
+        div, fieldset{
+            margin-bottom: 20px; /* Margem inferior */
+        }
+
+        fieldset, label{
+            /*Regra atinge só labels dentro de um fieldset*/
+            display: inline; /* Permite elementos lado a lado na mesma linha*/
+        }
+        #saudacao{
+            border: 3px solid navy;
+            padding: 10px;
+            background-color: lightskyblue;
+            text-align: center;
+            border-radius: 10px; /* Borda arredondada */
+            
+        }
+    </style> 
+    </style>
+</head>
+<body>
+    <h1>Gerador de Saudação</h1>
+    <div>
+        <label>
+            <span>Primeiro nome</span>
+            <input id="primeiro-nome" >
+        </label>
+    </div>
+    <div>
+        <label>
+            <span>Sobrenome</span>
+            <input id="sobrenome">
+        </label>
+    </div>
+    <div>
+        <label>
+            <span>Forma de tratamento</span>
+            <select id="tratamento">
+                <option>Selecione</option>
+                <option>Vossa majestade</option>
+                <option>Excelentíssimo</option>
+                <option>Ilustrísimo</option>
+                <option>Vossa senhoria</option>
+                <option>Senhor/ora</option>
+                <option>Cremosíssimo</option>
+            </select>
+        </label>
+    </div>
+    <fieldset>
+        <legend>Sexo</legend>
+        <label>
+            <input id="masculino" type="radio" name="sexo" checked>
+            &nbsp;
+            <span>Masculino</span>
+        </label>
+        <label>
+            <input id="feminino" type="radio" name="sexo">
+            &nbsp;
+            <span>Feminino</span>
+        </label>
+    <div>
+        <label>
+            <span>Hora do dia</span>
+            <input id="Horario" type="number" min="0" max="23">
+
+        </label>
+    </div>
+    <fieldset>
+        <legend>Opções com alert</legend>
+        <label>
+            <input id="exebir-alert" type="checkbox">
+            &nbsp;
+            <span>Exebir com alert</span>
+        </label>
+        <label>
+            <input id="exebir-doc" type="checkbox">
+            &nbsp;
+            <span>Exebir no documento</span>
+        </label>
+    </fieldset>
+    <div id="saudacao">
+        <!--Aqui aparecerá o texto da saudção se opção 'Exibir no documento'
+        estiver marcada-->
+    </div>
+    <div>
+        <button id="exibir"> Exibir</button>
+    </div>
+
+    <script>
+        const primeironome = document.getElementById('primeiro-nome')
+        const sobrenome = document.getElementById('sobrenome')
+        const tratamento = document.getElementById('tratamento')
+        const masculino = document.getElementById('masculino')
+        const feminino = document.getElementById('feminino')
+
+        const horario = document.getElementById('Horario')
+        const exebiralert = document.getElementById('exebir-alert')
+        const exebirdoc = document.getElementById('exebir-doc')
+        const saudacao = document.getElementById('saudacao')
+        const exibir = document.getElementById('exibir')
+        /*Validação*/
+        function validar(){
+            if(primeironome.value ===''){
+                alert('O primeiro nome deve ser preenchido')
+                primeironome.focus() //Coloca o cursor no campo
+                return false
+            }
+
+            if(sobrenome.value ===''){
+                alert('O sobrenome nome deve ser preenchido')
+                sobrenome.focus() //Coloca o cursor no campo
+                return false
+            }
+
+            if (tratamento.selectedIndex <= 0){
+                alert('Selecione uma forma de tratamento')
+                tratamento.focus()
+                return false
+            }
+
+            return true
+        }
+       
+        enviar.addEventListener('click', validar)
+        
+
+        
+    </script>
+</body>
+</html>
